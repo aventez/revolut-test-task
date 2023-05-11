@@ -15,7 +15,6 @@ Firstly, clone the repository by `git-clone`
 5. npm install
 6. npm run dev
 7. npm run watch # (if you want to have automatic front assets rebuild)
-
 ```
 
 ## 4. App is available
