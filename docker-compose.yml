@@ -1,0 +1,42 @@
+version: '3.3'
+
+services:
+  web:
+    container_name: web
+    build: ./docker/web
+    environment:
+      PHP_DATE_TIMEZONE: Europe/Warsaw
+      PHP_POST_MAX_SIZE: 128M
+      PHP_UPLOAD_MAX_FILESIZE: 128M
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/app'
+      - /app/vendor/
+      - /app/var/
+      - './docker/web/vhost.conf:/opt/docker/etc/nginx/vhost.conf'
+    links:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    env_file:
+      - docker.env
+    ports:
+      - '5432:5432'
+
+  front:
+    container_name: front
+    user: root
+    environment:
+      - NODE_ENV=dev
+    build: ./docker/front
+    volumes_from:
+      - web
+    stdin_open: true
+    tty: true
+
+networks:
+  postgres:
+    driver: bridge

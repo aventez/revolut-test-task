@@ -1,0 +1,23 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Event\OnOrderPlacedEventSubscriber:
+        tags:
+            - { name: kernel.event_subscriber, event: order.placed }
+
+    App\Application\RevolutApi\Auth\RevolutAuth:
+        arguments:
+            $bearerToken: '%env(REVOLUT_AUTH_TOKEN)%'
+
+    App\Application\RevolutApi\Client\RevolutClientInterface: '@App\Application\RevolutApi\Client\RevolutClient'

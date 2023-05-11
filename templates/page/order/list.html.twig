@@ -1,0 +1,50 @@
+{% import 'macro/convert_price_from_cents.twig' as macros %}
+
+{% extends 'layout/default.html.twig' %}
+
+{% block body %}
+    <div class="row justify-content-between mb-2">
+        <div class="col-4">
+        </div>
+        <div class="col-auto">
+            <a href="{{ path('order_create') }}" class="btn btn-success">
+                {{ 'app.order.index.createOrder'|trans }}
+            </a>
+        </div>
+    </div>
+
+        <table class="table table-responsive-sm table-hover table-outline mb-0 table-white-bg">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">{{ 'app.order.index.table.thId'|trans }}</th>
+                <th scope="col">{{ 'app.order.index.table.thAmount'|trans }}</th>
+                <th scope="col">{{ 'app.order.index.table.thCurrency'|trans }}</th>
+                <th scope="col">{{ 'app.order.index.table.thStatus'|trans }}</th>
+                <th scope="col">{{ 'app.order.index.table.thCreatedAt'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if orders is not empty %}
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ macros.convertPriceFromCents(order.amount) }}</td>
+                        <td>
+                            <span class="badge rounded-pill text-bg-secondary">{{ order.currency }}</span>
+                        </td>
+                        <td>
+                            <span class="badge rounded-pill text-bg-primary">{{ order.status.value }}</span>
+                        </td>
+                        <td>{{ order.createdAt|date('Y-m-d H:m:s')  }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan=4 style="text-align: center">
+                        {{ 'app.order.index.table.noResults'|trans }}
+                    </td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+{% endblock %}

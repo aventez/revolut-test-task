@@ -1,0 +1,6 @@
+{
+  "assets/app.css": "/assets/app.css",
+  "assets/app.js": "/assets/app.js",
+  "assets/runtime.js": "/assets/runtime.js",
+  "assets/vendors-node_modules_coreui_coreui_dist_js_coreui_esm_js-node_modules_symfony_stimulus-bridge-85978e.js": "/assets/vendors-node_modules_coreui_coreui_dist_js_coreui_esm_js-node_modules_symfony_stimulus-bridge-85978e.js"
+}

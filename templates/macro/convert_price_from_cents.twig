@@ -1,0 +1,3 @@
+{% macro convertPriceFromCents(priceInCents) %}
+    {{ (priceInCents / 100)|number_format(2, '.', '') }}
+{% endmacro %}

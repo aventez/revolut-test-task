@@ -1,0 +1,33 @@
+app:
+  title: 'Orders'
+
+  currency:
+    aed: 'United Arab Emirates dirham'
+    aud: 'Australian dollar'
+    bgn: 'Bulgarian lev'
+    cad: 'Canadian dollar'
+    chf: 'Swiss franc'
+    czk: 'Czech koruna'
+    dkk: 'Danish krone'
+    eur: 'Euro'
+    gbp: 'Pound sterling'
+    zar: 'South African rand'
+
+  order:
+    create:
+      title: 'Create An Order'
+      form:
+        email: 'Email'
+        amount: 'Amount'
+        currency: 'Currency'
+        submit: 'Submit'
+
+    index:
+      createOrder: 'Create Order'
+      table:
+        thId: 'ID'
+        thAmount: 'Amount'
+        thCurrency: 'Currency'
+        thStatus: 'Status'
+        thCreatedAt: 'Created At'
+        noResults: 'No Orders Yet'
